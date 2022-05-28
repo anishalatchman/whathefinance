@@ -12,7 +12,8 @@ from selenium.webdriver.firefox.options import Options
 
 options = Options()
 options.headless = True
-
+chromeOptions = webdriver.ChromeOptions()
+chromeOptions.headless = True
 
 class YourBrowserSucksError(Exception):
     def __str__(self):
@@ -43,9 +44,9 @@ def find_articles(keywords: list[str], browser: str = 'Firefox') -> list[str]:
         initial_site_url = f'https://www.investopedia.com/search?q={keyword}'
 
         if browser == 'Firefox':
-            driver = webdriver.Firefox(options=options)
+            driver = webdriver.Firefox(options=options, executable_path='driver (important!)/geckodriver.exe')
         elif browser == 'Chrome':
-            driver = webdriver.Chrome(options=options)
+            driver = webdriver.Chrome(options=chromeOptions, executable_path='driver (important!)/chromedriver.exe')
         else:
             raise YourBrowserSucksError
 
@@ -105,9 +106,9 @@ def get_summary(link: str, browser: str = 'Firefox') -> str:
 
     # Choose a good browser
     if browser == 'Firefox':
-        driver = webdriver.Firefox(options=options)
+        driver = webdriver.Firefox(options=options, executable_path='driver (important!)/geckodriver.exe')
     elif browser == 'Chrome':
-        driver = webdriver.Chrome(options=options)
+        driver = webdriver.Chrome(options=chromeOptions, executable_path='driver (important!)/chromedriver.exe')
     else:
         raise YourBrowserSucksError
 
