@@ -8,12 +8,24 @@ from bs4 import BeautifulSoup
 from selenium.webdriver.common.by import By
 from selenium.webdriver.support.expected_conditions import element_to_be_clickable
 from selenium.webdriver.support.ui import WebDriverWait
+from selenium.webdriver.firefox.options import Options
+
+options = Options()
+options.headless = True
 
 
-def find_articles(keywords: list[str]) -> list[str]:
+class YourBrowserSucksError(Exception):
+    def __str__(self):
+        return "You should get a better browser (our app doesn't work with yours) \n " \
+               "https://www.mozilla.org/en-CA/firefox/new/ \n " \
+               "https://www.google.com/intl/en_ca/chrome/"
+
+
+def find_articles(keywords: list[str], browser: str = 'Firefox') -> list[str]:
     """Find and return a list of (plausibly) relevant article URLs given a list of
     search keyword strings. Do this by scraping the web.
 
+    Allow the user to select their preferred browser.
     For now, work only off of the Investopedia website. The rest can come later.
     Also right now I'm only putting in one string for simplicity.
 
@@ -21,13 +33,23 @@ def find_articles(keywords: list[str]) -> list[str]:
 
     >>> find_articles(["Imperial Ships"])
     some links
+
+    >>> find_articles(["Imperial Ships"], 'Chrome')
+    some links
+
     """
     article_links = []
     for keyword in keywords:
         initial_site_url = f'https://www.investopedia.com/search?q={keyword}'
 
+        if browser == 'Firefox':
+            driver = webdriver.Firefox(options=options)
+        elif browser == 'Chrome':
+            driver = webdriver.Chrome(options=options)
+        else:
+            raise YourBrowserSucksError
+
         # Navigate to our initial site url. Download the source.
-        driver = webdriver.Firefox()
         driver.get(initial_site_url)
         srch_res_page = driver.page_source
 
@@ -42,12 +64,12 @@ def find_articles(keywords: list[str]) -> list[str]:
         for tag in search_result_tags:
             article_links.append(str(tag['href']))
 
-        driver.__exit__(
+        driver.__exit__()
 
     return article_links
 
 
-def summarize_articles(articles: list[str]) -> dict[str, str]:
+def summarize_articles(articles: list[str], browser: str = 'Firefox') -> dict[str, str]:
     """Return a dictionary mapping links of finance articles to their summaries.
 
     >>> my_links = ['https://www.reuters.com/article/us-tesla-musk-sec/teslas-musk-mocks-sec-as-judge-demands-they-justify-fraud-settlement-idUSKCN1ME2CC',\
@@ -58,12 +80,12 @@ def summarize_articles(articles: list[str]) -> dict[str, str]:
     """
     summaries = {}
     for url in articles:
-        summaries[url] = get_summary(url)
+        summaries[url] = get_summary(url, browser)
 
     return summaries
 
 
-def get_summary(link: str) -> str:
+def get_summary(link: str, browser: str = 'Firefox') -> str:
     """Return an AI-generated summary of an article at a particular link.
     The mean people at summarizebot haven't approved our API Key so this
     function web-scrapes their demo for now.
@@ -74,14 +96,25 @@ def get_summary(link: str) -> str:
 
     >>> get_summary('https://www.investopedia.com/articles/active-trading/051415/how-why-interest-rates-affect-options.asp')
     A string, obviously.
+
+    >>> get_summary('https://www.investopedia.com/articles/active-trading/051415/how-why-interest-rates-affect-options.asp', 'Chrome')
+    A string, obviously.
+
     """
     demo_url = 'https://www.summarizebot.com/text_api_demo.html'
 
+    # Choose a good browser
+    if browser == 'Firefox':
+        driver = webdriver.Firefox(options=options)
+    elif browser == 'Chrome':
+        driver = webdriver.Chrome(options=options)
+    else:
+        raise YourBrowserSucksError
+
     # Navigate to their site.
-    driver = webdriver.Firefox()
     driver.get(demo_url)
 
-    # Wait 10s if an element hasn't loaded before trying to find it properly.
+    # Wait 25s if an element hasn't loaded before trying to find it properly.
     driver.implicitly_wait(25)
 
     # Select the input box and input the link. Wait a bit until it's clickable.
