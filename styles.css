@@ -13,7 +13,11 @@ body {
 .container {
     position: absolute;
     left: 60px;
+    top: 48px;
+    right: 60px;
 }
 
 .side-nav a {
+    margin: 0;
+    width: auto;
 }
