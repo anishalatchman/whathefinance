@@ -1,0 +1,4 @@
+# Web scraping libraries
+selenium
+beautifulsoup4
+
