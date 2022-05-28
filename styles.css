@@ -1,0 +1,19 @@
+body {
+    font-family: "Work Sans", sans-serif;
+    margin:0px;
+}
+
+.side-nav {
+    background-color: #1E2B1F;
+    width: 346px;
+    min-height: 100%;
+    position: fixed
+}
+
+.container {
+    position: absolute;
+    left: 60px;
+}
+
+.side-nav a {
+}
