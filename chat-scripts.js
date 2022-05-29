@@ -18,7 +18,7 @@ function getResponse() {
 
     botMsg = getBotResponse(usermsg)
 
-    let userHtml = '<p class="usermsg"><span>' + usermsg + '</span></p>';
+    let userHtml = '<p class="user-msg"><span>' + usermsg + '</span></p>';
 
     $("#msg").val("");
     $("#texts").append(userHtml);
