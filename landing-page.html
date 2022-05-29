@@ -10,16 +10,43 @@
 <body>
     <div class="side-nav">
         <div class="container">
-        <image class="logo" src="./wtf logo.svg" width="222"/>
-        <image class="robot" src="./robot pfp.svg" width="151"/>
+        <image class="logo" src="./wtf logo.svg" width="200"/>
+        <image class="robot" src="./robot pfp.svg" width="130"/>
         <nav>
             <ul>
-                <li><a class="side-nav a" href="#"><image src="./chat.svg"/>Chat</a></li>
-                <li><a class="side-nav a" href="#"><image src="./discover.svg"/>Discover</a></li>
-                <li><a class="side-nav a" href="#"><image src="./saved.svg"/>Saved</a></li>
+                <li><a class="current" href="#"><image style="padding-right:10px" src="./chat.svg"/>Chat</a></li>
+                <li><a href="#"><image style="padding-right:10px" src="./discover.svg"/>Discover</a></li>
+                <li><a href="#"><image style="padding-right:10px" src="./saved.svg"/>Saved</a></li>
             </ul>
         </nav>
         </div>
     </div>
+
+    <div class="messenger">
+        <div class="top-bar">
+            <image src="./robot pfp.svg" width="60"/>
+            <p class="chat-name"> Chat </p>
+
+        </div>
+        <div class="texts">
+            <p id="botstartermsg" class="bot-msg"><span>Hi! Welcome to the WTF chat bot. You can ask me anything about 
+                finances and I’ll do my best to help you out.</span></p>
+            <p id="botstartermsg" class="bot-msg"><span><b>Not sure where to start? Here are some popular topics:</b> 
+                credit scores, income tax, TFSA, NFT, cryptocurrency</span></p>
+
+        </div>
+        <div class="send">
+            <form onsubmit="return getResponse()">
+                <input class= "send-msg" type="text" id="msg" name="msg" placeholder="Ask me anything!">
+                <input class="send-btn" type="image" id="submit"  name="submit" src="./send-icon.svg">
+            </form>
+        </div>
+        <div id="chat-bar-bottom">
+            <p></p>
+        </div>
+    </div>
 </body>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+<script> src="./chat-scripts.js" </script>
+<script> src="./responses.js" </script>
 </html>
