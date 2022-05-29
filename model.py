@@ -81,12 +81,12 @@ def summarize_articles(articles: list[str], browser: str = 'Firefox') -> dict[st
     """
     summaries = {}
     for url in articles:
-        summaries[url] = get_summary(url, browser)
+        summaries[url] = _get_summary(url, browser)
 
     return summaries
 
 
-def get_summary(link: str, browser: str = 'Firefox') -> str:
+def _get_summary(link: str, browser: str = 'Firefox') -> str:
     """Return an AI-generated summary of an article at a particular link.
     The mean people at summarizebot haven't approved our API Key so this
     function web-scrapes their demo for now.
@@ -95,10 +95,10 @@ def get_summary(link: str, browser: str = 'Firefox') -> str:
 
     BE WARNED! WEB-SCRAPING TAKES A WHILE!!!
 
-    >>> get_summary('https://www.investopedia.com/articles/active-trading/051415/how-why-interest-rates-affect-options.asp')
+    >>> _get_summary('https://www.investopedia.com/articles/active-trading/051415/how-why-interest-rates-affect-options.asp')
     A string, obviously.
 
-    >>> get_summary('https://www.investopedia.com/articles/active-trading/051415/how-why-interest-rates-affect-options.asp', 'Chrome')
+    >>> _get_summary('https://www.investopedia.com/articles/active-trading/051415/how-why-interest-rates-affect-options.asp', 'Chrome')
     A string, obviously.
 
     """
@@ -146,6 +146,7 @@ def get_summary(link: str, browser: str = 'Firefox') -> str:
             summary_sentences.append(tag.string)
 
     return '\n'.join(summary_sentences)
+
 
 
 if __name__ == "__main__":
