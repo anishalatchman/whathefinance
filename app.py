@@ -1,10 +1,13 @@
 # Instance of this is our kind of basic application.
 from flask import Flask
 from flask import request
+from flask_cors import CORS
 
 import model
 
 app = Flask(__name__)
+#TODO: Unsafe -- but we're just playing here.
+CORS(app)
 
 # Specify what URL triggers the function
 @app.route("/hello")

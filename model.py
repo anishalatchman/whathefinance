@@ -9,11 +9,19 @@ from selenium.webdriver.common.by import By
 from selenium.webdriver.support.expected_conditions import element_to_be_clickable
 from selenium.webdriver.support.ui import WebDriverWait
 from selenium.webdriver.firefox.options import Options
-
+# TODO: Security stuff we ignore for a demo.
 options = Options()
 options.headless = True
+options.accept_insecure_certs = True
+options.add_argument("--disable-web-security")
+options.add_argument("--disable-site-isolation-trials")
+
 chromeOptions = webdriver.ChromeOptions()
 chromeOptions.headless = True
+chromeOptions.accept_insecure_certs = True
+chromeOptions.add_argument("--disable-web-security")
+chromeOptions.add_argument("--disable-site-isolation-trials")
+
 
 class YourBrowserSucksError(Exception):
     def __str__(self):

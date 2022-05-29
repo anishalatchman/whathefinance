@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" xmlns="http://www.w3.org/1999/html">
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -8,6 +8,7 @@
     <title>What The Finance</title>
 </head>
 <body>
+
     <div class="side-nav">
         <div class="container">
         <image class="logo" src="./wtf logo.svg" width="200"/>
@@ -29,15 +30,15 @@
 
         </div>
         <div class="texts">
-            <p id="botstartermsg" class="bot-msg"><span>Hi! Welcome to the WTF chat bot. You can ask me anything about 
+            <p id="botstartermsg-1" class="bot-msg"><span>Hi! Welcome to the WTF chat bot. You can ask me anything about
                 finances and I’ll do my best to help you out.</span></p>
-            <p id="botstartermsg" class="bot-msg"><span><b>Not sure where to start? Here are some popular topics:</b> 
+            <p id="botstartermsg-2" class="bot-msg"><span><b>Not sure where to start? Here are some popular topics:</b>
                 credit scores, income tax, TFSA, NFT, cryptocurrency</span></p>
             <p class="user-msg"><span>Hi Bot!</span></p>
 
         </div>
         <div class="send">
-            <form onsubmit="return getResponse()">
+            <form onsubmit="getResponse(); return false">
                 <input class= "send-msg" type="text" id="msg" name="msg" placeholder="Ask me anything!">
                 <input class="send-btn" type="image" id="submit"  name="submit" src="./send-icon.svg">
             </form>
@@ -47,7 +48,9 @@
         </div>
     </div>
 </body>
+
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
-<script> src="./chat-scripts.js" </script>
-<script> src="./responses.js" </script>
+<script src="./chat-scripts.js"></script>
+<script src="./responses.js"></script>
+
 </html>
