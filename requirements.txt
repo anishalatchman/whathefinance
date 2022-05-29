@@ -2,3 +2,6 @@
 selenium
 beautifulsoup4
 
+# Jury rigging an API
+flask
+flask_restful
