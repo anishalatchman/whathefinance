@@ -13,6 +13,8 @@ Our website mockup was created in Figma, which was then recreated with vanilla H
 # Next steps for What The Finance
 Future implementations will work to make the web app more efficient and expand its features.
 
-Implement a discover recent articles page
+Implement a discover recent articles 
+
 Implement an option and page for users to save search result summaries
+
 Implement a faster method of summarizing articles
