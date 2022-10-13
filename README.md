@@ -1,5 +1,5 @@
 # What The Finance? 💸🤑
-The one-stop web app for teen financial literacy.
+The one-stop app for teen financial literacy.
 
 # Video demo:
 https://www.youtube.com/watch?v=g0YuUPC9ZSY&ab_channel=AnishaLatchman
