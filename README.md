@@ -4,7 +4,7 @@ The one-stop web app for teen financial literacy.
 # Video demo:
 https://www.youtube.com/watch?v=g0YuUPC9ZSY&ab_channel=AnishaLatchman
 
-# The Problem
+# The problem
 Entering the world of credit scores, taxes, stocks, and crypto as a clueless young adult can be scary. Financial literacy rates are significantly lower compared to subjects that are taught in schools, ie. math and English.
 
 # Our solution
