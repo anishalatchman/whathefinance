@@ -1,4 +1,4 @@
-# What The Finance?
+# What The Finance? 💸🤑
 The one-stop web app for teen financial literacy.
 
 # Video demo:
