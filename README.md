@@ -3,6 +3,7 @@ The one-stop app for teen financial literacy.
 
 # Demo:
 Watch the video demo: https://www.youtube.com/watch?v=g0YuUPC9ZSY&ab_channel=AnishaLatchman
+View the Figma board: https://www.figma.com/file/sGmesjHYemQNagJn6lpCk2/What-The-Finance?node-id=0%3A1&t=ZOEpLfm6EdyiLWIb-1
 
 ![What the finance thumbnail](whatthefinance_thumb.jpg)
 
